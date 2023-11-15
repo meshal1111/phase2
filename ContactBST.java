@@ -123,5 +123,25 @@ BSTNode<T> root, current;
 		BSTNode<T> p = B.root;
 				return p;
 	}
+	public  void findByFirstName(String name,BSTNode<T> root) {
+		
+		if (root != null) {
+			
+            // Traverse the left subtree
+			findByFirstName(name,root.left);
 
-}
+            String words[] = root.data.getName().split(" "); // split name
+			if (words[0].equalsIgnoreCase(name)) {
+				 
+				System.out.println("contacts found\nName: " + root.data.getName() + "\nPhone Number: "
+						+ root.data.getPhonenumber() + "\nEmail Address: " + root.data.getEmail()
+						+ "\nAddress: " + root.data.getAddress()+ "\nBirthday: " + root.data.getBirthday()
+						+ "\nNotes: " + root.data.getNotes());
+			}
+            
+
+            // Traverse the right subtree
+			findByFirstName(name,root.right);
+        }
+	}
+    	}
