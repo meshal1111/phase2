@@ -144,47 +144,54 @@ BSTNode<T> root, current;
 			findByFirstName(name,root.right);
         }
 	}
-	public static<T> Boolean searchByNameBoolean(BSTNode<T> root,String name) {
-		//test
-	
-        if (root != null) {
-            // Traverse the left subtree
-            printInOrder(root.left);
-
-            // Print the current node's value
-            if(root.data.getName().equalsIgnoreCase(name))
-            	return true;
-
-            // Traverse the right subtree
-            printInOrder(root.right);
-        }
-        return false;
+	public  Boolean searchByNameBoolean(String tkey) {
+		BSTNode<T> p = root,q = root;
+		
+		if(empty())
+			return false;
+		
+		while(p != null) {
+			q = p;
+			if(p.key.equalsIgnoreCase(tkey)) {
+				current = p;
+				return true;
+			}
+			else if(tkey.compareTo(p.key) < 0 )
+				p = p.left;
+			else
+				p = p.right;
+		}
+		
+		current = q;
+		return false;
 	}
-	public static<T> void searchByName2(BSTNode<T> root,String name) {
-		//test
-	
-        if (root != null) {
-            // Traverse the left subtree
-            printInOrder(root.left);
-
-            // Print the current node's value
-            if(root.data.getName().equalsIgnoreCase(name)) {
-            	System.out.println("contacts found\nName: " + root.data.getName() + "\nPhone Number: "
-						+ root.data.getPhonenumber() + "\nEmail Address: " + root.data.getEmail()
-						+ "\nAddress: " + root.data.getAddress()+ "\nBirthday: " + root.data.getBirthday()
-						+ "\nNotes: " + root.data.getNotes());
-            }
-
-            // Traverse the right subtree
-            printInOrder(root.right);
-        }
+	public  Contact searchByName(String tkey) {
+BSTNode<T> p = root,q = root;
+		
+		if(empty())
+			return null;
+		
+		while(p != null) {
+			q = p;
+			if(p.key.equalsIgnoreCase(tkey)) {
+				current = p;
+				return current.data;
+			}
+			else if(tkey.compareTo(p.key) < 0 )
+				p = p.left;
+			else
+				p = p.right;
+		}
+		
+		current = q;
+		return null;
 	}
         public static<T> void searchByEmail(BSTNode<T> root,String Email) {
-    		//test
+    		
     	
             if (root != null) {
                 // Traverse the left subtree
-                printInOrder(root.left);
+            	searchByEmail(root.left,Email);
 
                 // Print the current node's value
                 if(root.data.getEmail().equalsIgnoreCase(Email)) {
@@ -195,15 +202,15 @@ BSTNode<T> root, current;
                 }
 
                 // Traverse the right subtree
-                printInOrder(root.right);
+                searchByEmail(root.right,Email);
             }
 	}
         public static<T> void searchByBirthday(BSTNode<T> root,String Birth) {
-    		//test
+    		
     	
             if (root != null) {
                 // Traverse the left subtree
-                printInOrder(root.left);
+            	searchByBirthday(root.left,Birth);
 
                 // Print the current node's value
                 if(root.data.getEmail().equalsIgnoreCase(Birth)) {
@@ -214,15 +221,15 @@ BSTNode<T> root, current;
                 }
 
                 // Traverse the right subtree
-                printInOrder(root.right);
+                searchByBirthday(root.right,Birth);
             }
 	}
         public static<T> void searchByAddress(BSTNode<T> root,String Address) {
-    		//test
+    		
     	
             if (root != null) {
                 // Traverse the left subtree
-                printInOrder(root.left);
+            	searchByAddress(root.left,Address);
 
                 // Print the current node's value
                 if(root.data.getEmail().equalsIgnoreCase(Address)) {
@@ -233,44 +240,45 @@ BSTNode<T> root, current;
                 }
 
                 // Traverse the right subtree
-                printInOrder(root.right);
+                searchByAddress(root.right,Address);
             }
         }
-        public static<T> void searchByPhone(BSTNode<T> root,String phone) {
-    		//test
-    	
-            if (root != null) {
-                // Traverse the left subtree
-                printInOrder(root.left);
-
-                // Print the current node's value
-                if(root.data.getEmail().equalsIgnoreCase(phone)) {
-                	System.out.println("contacts found\nName: " + root.data.getName() + "\nPhone Number: "
-    						+ root.data.getPhonenumber() + "\nEmail Address: " + root.data.getEmail()
-    						+ "\nAddress: " + root.data.getAddress()+ "\nBirthday: " + root.data.getBirthday()
-    						+ "\nNotes: " + root.data.getNotes());
-                }
-
-                // Traverse the right subtree
-                printInOrder(root.right);
+        public static<T> Contact searchByPhone(BSTNode<T> root,String phone) {
+        	  // Base case: if the node is null, value not found
+            if (root == null) {
+                return null;
             }
+
+            // Check if the current node's value is equal to x
+            if (root.data.getPhonenumber().equalsIgnoreCase(phone)) {
+                return root.data; // Value found, stop recursion
+            }
+
+            // Recursively search in the left subtree
+            Contact leftResult = searchByPhone(root.left, phone);
+            if (leftResult!=null) {
+                return leftResult; // Value found in the left subtree, stop recursion
+            }
+
+            // Recursively search in the right subtree
+            return searchByPhone(root.right, phone);
         }
         public static<T> Boolean searchByPhoneBoolean(BSTNode<T> root,String phone) {
-    		//test
-    	
-            if (root != null) {
-                // Traverse the left subtree
-                printInOrder(root.left);
-
-                // Print the current node's value
-                if(root.data.getName().equalsIgnoreCase(phone))
-                	return true;
-
-                // Traverse the right subtree
-                printInOrder(root.right);
+        	if (root == null) {
+                return false;
             }
-            return false;
+
+            // Check if the current node's value is equal to x
+            if (root.data.getPhonenumber().equalsIgnoreCase(phone) ) {
+                return true; // Value found, stop recursion
+            }
+
+            // Recursively search in the left subtree
+            if (searchByPhoneBoolean(root.left, phone)) {
+                return true; // Value found in the left subtree, stop recursion
+            }
+
+            // Recursively search in the right subtree
+            return searchByPhoneBoolean(root.right, phone); // Value found or not, return the result
         }
-        
-        
     	}
