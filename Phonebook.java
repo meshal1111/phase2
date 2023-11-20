@@ -10,7 +10,7 @@ public class Phonebook {
 		BST.insert("a t", "13", "a", "a", "a", "a");
 		BST.printInOrder(BST.findroot(BST));
 		System.out.println("==============");
-		BST.remove_key("b");
+		BST.remove_key("b",li);
 		BST.printInOrder(BST.findroot(BST));
 		BST.insert("a c", "1", "ab", "ab", "ab", "a");
 		System.out.println("==============");
@@ -28,10 +28,22 @@ public class Phonebook {
 		li.Scheduleevent("x","a" , "a",BST.searchByName("a c") , true, li);
 		li.Scheduleevent("a","a" , "a",BST.searchByName("a t") , false, li);
 		li.Scheduleevent("a","a" , "a",BST.searchByName("a c") , false, li);
+		li.Scheduleevent("a","a" , "a",BST.searchByName("c") , false, li);
 		li.test();
 		System.out.println("==============");
 		System.out.println("==============");
-		System.out.println(li.isconflict(BST.searchByName("a t"), "1"));
+		//System.out.println(li.isconflict(BST.searchByName("a t"), "1"));
+		System.out.println("==============");
+		System.out.println("==============");
+		System.out.println("==============");
+		System.out.println("==============");
+		BST.remove_key("a c",li);
+		li.test();
+		System.out.println("==============");
+		System.out.println("==============");
+		System.out.println("==============");
+		System.out.println("==============");
+		BST.printInOrder(BST.findroot(BST));
 	}
 
 }

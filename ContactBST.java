@@ -64,11 +64,13 @@ BSTNode<T> root, current;
 			return true;
 		}
 	}
-	public boolean remove_key (String tkey){
+	public boolean remove_key (String tkey,LinkedList<Event> l){
 		Boolean removed = false;
 		BSTNode<T> p;
 		p = remove_aux(tkey, root, removed);
 		current = root = p;
+		l.removeevent(tkey);
+		
 		return removed;
 	}
 	private BSTNode<T> remove_aux(String key, BSTNode<T> p, Boolean flag) {

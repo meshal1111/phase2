@@ -149,6 +149,56 @@ public class LinkedList<T> extends Node<T> {
 			current = current.next;
 		}
 	}
+	public void removecontactlist( String contact) {
+
+		
+		current = head;
+		// Case 1: Remove the head node
+		
+
+		// Case 2: Remove a node other than the head
+		Node<T> prev = head;
+		Node<T> curr = head.next;
+
+		while (curr != null) {
+			if (curr.Data.getName().equalsIgnoreCase(contact)) {
+				prev.next = curr.next;
+				
+				
+			}
+			prev = curr;
+			curr = curr.next;
+		}
+		if (head.Data.getName().equalsIgnoreCase(contact)) {
+			head = head.next;
+			
+		}
+	}
+	public void removeevent( String contact) {
+		if (empty()) {
+			return;
+		}
+		
+		current = head;
+		
+		
+		Node<T> prev = head;
+		Node<T> curr = head.next;
+		while(curr!=null) {
+			curr.data.listC.removecontactlist(contact);
+			if(curr.data.listC.empty())
+				prev.next = curr.next;	
+			prev = curr;
+			curr = curr.next;
+		}
+		current.data.listC.removecontactlist(contact);
+		// Case 1: Remove the head node
+		if (current.data.listC.empty()) {
+			head = head.next;
+		}
+		
+		
+	}
 	
 	}	
 	
