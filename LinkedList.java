@@ -199,6 +199,34 @@ public class LinkedList<T> extends Node<T> {
 		
 		
 	}
+	public void searchByEventName(LinkedList<T> l,String title) {
+		current=head;
+		while(current!=null) {
+			if(l.data.getTitle().equalsIgnoreCase(title)) {
+				System.out.println("Event found!\nEvent Title: "+l.data.getTitle()+"\nContact name: "+l.Data.getName()+"\nEvent date and time (MM/DD/YYYY HH:MM) "+l.data.getDateandtime()+"\nEvent location: "+l.data.getLocation());
+			}
+		}
+	}
+	public void searchByContactName(LinkedList<T> l,String name) {
+		current=head;	
+		while(current!=null) {
+			if(current.data.isAppointment()){
+				if(current.Data.getName().equalsIgnoreCase(name))
+					System.out.println("Event found!\nEvent Title: "+l.data.getTitle()+"\nContact name: "+l.Data.getName()+"\nEvent date and time (MM/DD/YYYY HH:MM) "+l.data.getDateandtime()+"\nEvent location: "+l.data.getLocation());
+			}
+			else 
+			{
+			Node<Contact> tmp=current.data.listC.head;//the list for contact names
+			while(tmp!=null) {
+			if(tmp.Data.getName().equalsIgnoreCase(name)) {
+				System.out.println("Contact found!\nEvent Title: "+l.data.getTitle()+"\nContact name: "+l.Data.getName()+"\nEvent date and time (MM/DD/YYYY HH:MM) "+l.data.getDateandtime()+"\nEvent location: "+l.data.getLocation());
+			}
+			tmp=tmp.next;
+			}
+			current=current.next;
+	}
+		}
+	}
 	
 	}	
 	
