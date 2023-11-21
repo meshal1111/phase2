@@ -37,13 +37,14 @@ public class Phonebook {
 		System.out.println("==============");
 		System.out.println("==============");
 		System.out.println("==============");
-		BST.remove_key("a c",li);
+		//BST.remove_key("a c",li);
 		li.test();
 		System.out.println("==============");
 		System.out.println("==============");
 		System.out.println("==============");
 		System.out.println("==============");
-		BST.printInOrder(BST.findroot(BST));
+		//BST.printInOrder(BST.findroot(BST));
+		li.searchByContactName(li, "a t");
 	}
 
 }
