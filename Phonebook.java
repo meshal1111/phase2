@@ -44,7 +44,12 @@ public class Phonebook {
 		System.out.println("==============");
 		System.out.println("==============");
 		//BST.printInOrder(BST.findroot(BST));
-		li.searchByContactName(li, "a t");
+		li.searchByContactName(li, "c");
+		System.out.println("==============");
+		System.out.println("==============");
+		System.out.println("==============");
+		System.out.println("==============");
+		li.searchByEventName(li, "x");
 	}
 
 }
