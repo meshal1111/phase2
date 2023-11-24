@@ -1,23 +1,24 @@
 
-public class Contact implements Comparable<Contact>{
-	//Attibute
-	 private String name;
-	 private String phonenumber;
-	 private String email;
-	 private String address;
-	 private String birthday;
-	 private String notes;
-	 
-	 //Constructor
-	 public Contact(String na,String p,String e,String a,String b,String no) {
-		 name=na;
-		 phonenumber=p;
-		 email=e;
-		 address=a;
-		 birthday=b;
-		 notes=no;
-		}
-	//setters and getters
+public class Contact implements Comparable<Contact> {
+	// Attibute
+	private String name;
+	private String phonenumber;
+	private String email;
+	private String address;
+	private String birthday;
+	private String notes;
+
+	// Constructor
+	public Contact(String na, String p, String e, String a, String b, String no) {
+		name = na;
+		phonenumber = p;
+		email = e;
+		address = a;
+		birthday = b;
+		notes = no;
+	}
+
+	// setters and getters
 	public String getName() {
 		return name;
 	}
@@ -65,13 +66,13 @@ public class Contact implements Comparable<Contact>{
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
-	//sort by name
+
+	// sort by name
 	@Override
 	public int compareTo(Contact otherContact) {
-		  
-			  return this.name.compareToIgnoreCase(otherContact.name);
-		  
+
+		return this.name.compareToIgnoreCase(otherContact.name);
+
 	}
-	 
-	 
+
 }

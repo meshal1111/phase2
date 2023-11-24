@@ -13,6 +13,7 @@ public class Node<T> {
 		data = val;
 		next = null;
 	}
+
 	public Node(Contact val) {
 		Data = val;
 		next = null;
